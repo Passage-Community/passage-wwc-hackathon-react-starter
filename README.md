@@ -1,19 +1,34 @@
-# passage-wwc-hackathon-react-starter
-
-
-
-
-# Passage Example React App with Express.js Backend
-
 <p>
-    <img alt="npm" src="https://img.shields.io/npm/v/@passageidentity/passage-elements?color=43BD15&label=@passageidentity/passage-elements">
-    <img alt="npm" src="https://img.shields.io/npm/v/@passageidentity/passage-node?color=43BD15&label=@passageidentity/passage-node">
+    <img src="https://storage.googleapis.com/passage-docs/passage-logo-gradient.svg" alt="Passage logo" style="width:150px;"/>
+    <img src="https://bookface-images.s3.amazonaws.com/logos/f193d070e480ede387ee00a9006482bee4a6b8dd.png" alt="Women Who Code logo" style="width:150px;"/>
+
 </p>
-<br/><br/>
 
-This example application uses the Passage Element in a React application with an Express.js backend to authenticate users using biometrics or magic links. To run this example application, follow the instructions below to install and start the application.
+# Passage Auth - React App with Express.js Backend Hackathon Starter
 
-## Configure Your Environment Variables
+Women Who Code Hackathon for Social Good 2023 
+
+[Hackathon Website](https://hopin.com/events/wwcode-hackathon-for-social-good/registration)
+
+This repository acts as a boilerplate for React/Express applications with 1Password's [Passage Authentication](https://passage.1password.com/). The team at Passage has created this with the hope to make it easy for everyone to contribute to hackathon projects as quickly as possible. The app is ready to go with Passage biometric or magic link user authentication. 
+
+
+## Passage 
+
+_Short paragraph about Passage._
+You can reach out to the team with questions and for any support via [Discord](https://discord.com/invite/445QpyEDXh). [Github](https://github.com/passageidentity)
+
+[Passage Console](https://console.passage.id)
+![Alt text](<Screenshot 2023-10-02 at 6.46.04 PM.png>)
+
+---
+
+# Installation
+To run this application, follow the instructions below to install and start the application.
+
+
+
+### Configure Your Environment Variables
 
 1. Rename the EXAMPLE.env file to .env for both the frontend and backend directories
 2. Replace the example variables for each .env file with your own Passage App ID and API Key. You can get these from the [Passage Console](https://console.passage.id).
