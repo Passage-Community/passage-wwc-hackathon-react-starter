@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@passageidentity/passage-node": "file:~/passageidentity-passage-node-2.4.2.tgz",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  }
+}
