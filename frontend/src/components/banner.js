@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import styles from '../styles/Banner.module.css';
 
 function Banner() {
     return ( 
         <div className={styles.mainHeader}>
-            <a href="https://passage.id/" ><div className={styles.passageLogo}></div></a>
-            <div className={styles.headerText}>Passage + React Example App</div>
+            <Link to={'/'}><div className={styles.passageLogo}></div></Link>
+            <div className={styles.headerText}>Hackathon Project</div>
             <div className={styles.spacer}></div>
-            <a href="https://passage.id/" className={styles.link}>Go to Passage</a>
+            <Link to={'/profile'}>Profile</Link>
         </div>
     );
 }

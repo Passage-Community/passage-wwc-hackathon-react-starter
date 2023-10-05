@@ -9,7 +9,7 @@ function Dashboard() {
     }
     const authorizedBody = 
     <>
-        You successfully signed in with Passage.
+        You successfully signed in with Passage. This is your homepage.
         <br/><br/>
         Your username is: <b>{username}</b>
     </>
