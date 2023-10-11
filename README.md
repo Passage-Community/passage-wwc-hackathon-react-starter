@@ -6,14 +6,13 @@
 
 # Passage Auth - React App with Express.js Backend Hackathon Starter
 
-Women Who Code Hackathon for Social Good 2023 
+Women Who Code Hackathon for Social Good 2023
 
 [Hackathon Website](https://hopin.com/events/wwcode-hackathon-for-social-good/registration)
 
-This repository acts as a boilerplate for React/Express applications with 1Password's [Passage Authentication](https://passage.1password.com/). The team at Passage has created this with the hope to make it easy for everyone to contribute to hackathon projects as quickly as possible. The app is ready to go with Passage biometric or magic link user authentication. 
+This repository acts as a boilerplate for React/Express applications with 1Password's [Passage Authentication](https://passage.1password.com/). The team at Passage has created this with the hope to make it easy for everyone to contribute to hackathon projects as quickly as possible. The app is ready to go with Passage biometric or magic link user authentication.
 
-
-## Passage 
+## Passage
 
 _Short paragraph about Passage._
 You can reach out to the team with questions and for any support via [Discord](https://discord.com/invite/445QpyEDXh). [Github](https://github.com/passageidentity)
@@ -24,9 +23,8 @@ You can reach out to the team with questions and for any support via [Discord](h
 ---
 
 # Installation
+
 To run this application, follow the instructions below to install and start the application.
-
-
 
 ### Configure Your Environment Variables
 
@@ -35,20 +33,20 @@ To run this application, follow the instructions below to install and start the 
 
 ## Install Dependencies & Run Backend/Frontend
 
-Backend dependencies
 ```bash
-cd backend/
-npm i
-node server.js
-cd ..
+npm run bootstrap
 ```
 
-Frontend dependencies
+Start the express server
+
 ```bash
-cd frontend/
-npm i
-npm run start
-cd ..
+npm run start-backend
+```
+
+Start the React application
+
+```bash
+npm run start-frontend
 ```
 
 The application will run on http://localhost:3000, which you can navigate to in your browser.
@@ -60,12 +58,15 @@ Navigate to [http://localhost:3000](http://localhost:3000) and see what it's lik
 <br/><br/>
 
 # Using Passage with Express.js
+
 Import passage from npm:
+
 ```javascript
 const Passage = require("@passageidentity/passage-node");
 ```
 
 Instantiate the Passage class:
+
 ```javascript
 const passage = new Passage({
   appID: process.env.PASSAGE_APP_ID,
@@ -75,6 +76,7 @@ const passage = new Passage({
 ```
 
 Declare an Express route and use the instantiated Passage class to authenticate users!
+
 ```javascript
 app.post("/auth", async (req, res) => {
   try {
@@ -99,27 +101,30 @@ app.post("/auth", async (req, res) => {
 });
 ```
 
-
 <br/><br/>
 
 # Using Passage with React
 
 ## Importing and Using the Passage-Auth Custom Element
+
 The easiest way to add authentication to a web frontend is with a Passage Auth custom element. First you'll need to install the [passage-elements](https://www.npmjs.com/package/@passageidentity/passage-elements) package from npm:
+
 ```
 npm i --save @passageidentity/passage-elements
 ```
+
 Then import the package in the module where you intend to use the custom element
+
 ```
 import '@passageidentity/passage-elements/passage-auth'
 ```
+
 Importing this script will register the Passage custom element for use in your React components. For more information about custom elements refer to the [online documentation](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
 
 Its then just a matter of embedding the passage-auth element into your component that will handle login. This is done in this example in the home component:
+
 ```html
 <div className="form-container">
-  <passage-auth
-    app-id={process.env.REACT_APP_PASSAGE_APP_ID}
-  />
+  <passage-auth app-id="{process.env.REACT_APP_PASSAGE_APP_ID}" />
 </div>
 ```
