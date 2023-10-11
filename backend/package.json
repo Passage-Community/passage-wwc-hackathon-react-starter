@@ -4,5 +4,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3"
+  },
+  "scripts": {
+    "start": "npx nodemon node server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
