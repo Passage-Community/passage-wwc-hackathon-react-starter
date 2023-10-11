@@ -15,10 +15,12 @@ This repository acts as a boilerplate for React/Express applications with 1Passw
 
 ## Passage 
 
-_Short paragraph about Passage._
-You can reach out to the team with questions and for any support via [Discord](https://discord.com/invite/445QpyEDXh). [Github](https://github.com/passageidentity)
+Passage is a authentication as a service platform that allows you to provide passwordless authentication to your users without having to worry about the initial setup and continue maintence high quality authentication requires. 
 
-[Passage Console](https://console.passage.id)
+To get started with the boilerplat you'll first need to set up a Passage app. You can do this by visiting [console.passage.id](console.passage.id) or following our [quickstart guide](https://docs.passage.id/getting-started/quickstart#create-an-app-in-the-passage-console). 
+
+You can reach out to the team forsupport via [Discord](https://discord.com/invite/445QpyEDXh).
+
 ![Alt text](<Screenshot 2023-10-02 at 6.46.04 PM.png>)
 
 ---
