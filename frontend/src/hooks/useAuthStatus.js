@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:7000";
+const API_URL = "http://localhost:7001";
 
 export function useAuthStatus() {
   const [result, setResult] = useState({
