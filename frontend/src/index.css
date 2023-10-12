@@ -2,5 +2,10 @@ body {
   margin: 0px;
   height: 100vh;
   font-family: sans-serif;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
+}
+
+iframe#webpack-dev-server-client-overlay {
+  display: none !important;
+  visibility: hidden !important;
 }
