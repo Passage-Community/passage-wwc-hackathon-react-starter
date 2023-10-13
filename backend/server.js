@@ -3,7 +3,7 @@ const Passage = require("@passageidentity/passage-node");
 const cors = require("cors");
 
 const app = express();
-const PORT = 7001;
+const PORT = 3000;
 const CLIENT_URL = "http://localhost:3000";
 
 require("dotenv").config();
