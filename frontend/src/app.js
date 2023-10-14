@@ -1,12 +1,12 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { PassageProvider } from "@passageidentity/passage-react";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { PassageProvider } from '@passageidentity/passage-react';
 
-import Home from "./views/Home";
-import Dashboard from "./views/Dashboard";
-import Profile from "./views/Profile";
-import Banner from "./components/banner";
-import styles from "./styles/App.module.css";
+import Home from './views/Home';
+import Dashboard from './views/Dashboard';
+import Profile from './views/Profile';
+import Banner from './components/banner';
+import styles from './styles/App.module.css';
 
 function App() {
   return (

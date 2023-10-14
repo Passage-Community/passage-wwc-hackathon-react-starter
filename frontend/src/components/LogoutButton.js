@@ -1,5 +1,5 @@
-import { usePassageLogout } from "../hooks";
-import { useNavigate } from "react-router-dom";
+import { usePassageLogout } from '../hooks';
+import { useNavigate } from 'react-router-dom';
 
 export const LogoutButton = () => {
   const { logout } = usePassageLogout();
@@ -8,7 +8,7 @@ export const LogoutButton = () => {
 
   const signout = () => {
     logout();
-    navigate("/");
+    navigate('/');
   };
   return <button onClick={signout}>Sign Out</button>;
 };

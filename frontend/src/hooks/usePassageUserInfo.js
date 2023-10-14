@@ -1,5 +1,5 @@
-import { usePassage } from "@passageidentity/passage-react";
-import { useState, useEffect } from "react";
+import { usePassage } from '@passageidentity/passage-react';
+import { useState, useEffect } from 'react';
 
 export const usePassageUserInfo = () => {
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ export const usePassageUserInfo = () => {
 
   return {
     loading,
-    userInfo,
+    userInfo
   };
 };
 

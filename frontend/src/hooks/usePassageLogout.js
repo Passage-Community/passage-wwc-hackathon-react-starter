@@ -1,4 +1,4 @@
-import { usePassage } from "@passageidentity/passage-react";
+import { usePassage } from '@passageidentity/passage-react';
 
 export const usePassageLogout = () => {
   const { getCurrentSession } = usePassage();

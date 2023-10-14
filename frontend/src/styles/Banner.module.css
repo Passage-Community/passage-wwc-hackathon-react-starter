@@ -12,7 +12,7 @@
 }
 
 .passageLogo {
-  background-image: url("https://storage.googleapis.com/passage-docs/passage-logo-dark.svg");
+  background-image: url('https://storage.googleapis.com/passage-docs/passage-logo-dark.svg');
   background-repeat: no-repeat;
   width: 60px;
   height: 60px;
