@@ -1,7 +1,7 @@
-import styles from "../styles/Dashboard.module.css";
-import { PassageAuthGuard } from "@passageidentity/passage-react";
-import { usePassageUserInfo } from "../hooks/";
-import LogoutButton from "../components/LogoutButton";
+import styles from '../styles/Dashboard.module.css';
+import { PassageAuthGuard } from '@passageidentity/passage-react';
+import { usePassageUserInfo } from '../hooks/';
+import LogoutButton from '../components/LogoutButton';
 
 function Dashboard() {
   const { userInfo, loading } = usePassageUserInfo();

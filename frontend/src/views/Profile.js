@@ -1,4 +1,4 @@
-import { PassageProfile } from "@passageidentity/passage-react";
+import { PassageProfile } from '@passageidentity/passage-react';
 
 function Profile() {
   return (
