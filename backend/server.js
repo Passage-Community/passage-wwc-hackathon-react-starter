@@ -1,19 +1,15 @@
-const express = require("express");
-const Passage = require("@passageidentity/passage-node");
-const cors = require("cors");
-
+const express = require('express');
+const Passage = require('@passageidentity/passage-node');
+const cors = require('cors');
+const users = require('./api/routes/users-route');
 const app = express();
-const PORT = 7001;
-const CLIENT_URL = "http://localhost:3000";
+
+// const CLIENT_URL = 'http://localhost:3000';
 
 require("dotenv").config();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: CLIENT_URL,
-  })
-);
+app.use(cors());
 
 const passage = new Passage({
   appID: process.env.PASSAGE_APP_ID,
@@ -21,7 +17,11 @@ const passage = new Passage({
   authStrategy: "HEADER",
 });
 
-app.post("/auth", async (req, res) => {
+app.use('/api/users', users);
+
+app.use('*', (req, res) => res.send(`<h2>Route not handled ${req.baseUrl}</h2>`));
+
+app.post('/auth', async (req, res) => {
   try {
     const userID = await passage.authenticateRequest(req);
     if (userID) {
@@ -43,6 +43,4 @@ app.post("/auth", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-});
+module.exports = app;
