@@ -10,8 +10,18 @@ const UserSchema = new mongoose.Schema(
             unique: true
         },
         zipcode: {type: String},
-        favoritepeople: {type: String},
-        favoritelistings: {type: String},
+        favoritepeople:  [
+            {
+                type: mongoose.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+        favoritelistings: [
+            {
+                type: mongoose.Types.ObjectId,
+                ref: "Listing"
+            }
+        ],
         listings: [
             {
                 type: mongoose.Types.ObjectId,

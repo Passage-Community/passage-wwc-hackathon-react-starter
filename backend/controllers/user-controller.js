@@ -15,10 +15,10 @@ router.get("/allUsers", async (req, res) => {
 });
 
 //retrieve information from one user by their passage ID
-router.post("/getUserProfile", async (req, res) => {
+router.get("/getUserProfile", async (req, res) => {
     try {
         const getUser = await User.findOne({passage_id: req.body.psg_auth_token})
-        res.status(200).json(oneUser);
+        res.status(200).json(getUser);
       } catch (err) {
         res.status(400).json({ error: err });
       }});
@@ -37,7 +37,7 @@ router.post("/createUserProfile", async (req, res) => {
 
 
 //update user profile
-router.post("/updateUserProfile", async (req, res) => {
+router.put("/updateUserProfile", async (req, res) => {
   try {
     
     const updatedUser = await User.findByIdAndUpdate(
