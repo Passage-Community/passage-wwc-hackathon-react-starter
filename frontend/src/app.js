@@ -14,7 +14,7 @@ function App() {
     <PassageProvider appId={process.env.REACT_APP_PASSAGE_APP_ID}>
       <div>
         <Banner />
-        <div className={styles.mainContainer}>
+        <div>
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
