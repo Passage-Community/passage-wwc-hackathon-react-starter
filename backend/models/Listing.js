@@ -10,8 +10,7 @@ const ListingSchema = new mongoose.Schema(
         },
         category: {
             type: String, 
-            enum: { "produce", "live plant", "seed"},
-            description: "Must be either produce, live plant, or seed"
+            enum: { values: ["produce", "live plant", "seed"], description: "Must be either produce, live plant, or seed"}
         },  
         dateexpires: {
             type: Date,
@@ -24,4 +23,4 @@ const ListingSchema = new mongoose.Schema(
 
 const Listing = mongoose.model("Listing", ListingSchema);
 
-module.exports = User;
+module.exports = Listing;
