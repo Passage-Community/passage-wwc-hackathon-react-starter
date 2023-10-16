@@ -21,7 +21,7 @@ export const usePassageUserInfo = () => {
       }
     };
     loadUserInfo();
-  }, []);
+  }, [getCurrentUser]);
 
   return {
     loading,
