@@ -27,11 +27,6 @@ function Dashboard() {
     >
       <div className={styles.dashboard}>
         <div className={styles.title}>Welcome</div>
-        <div className={styles.message}>
-          You successfully signed in with Passage. This is your homepage. <br />
-          <br />
-          Your username is: {userInfo?.email}
-        </div>
         <LogoutButton />
       </div>
     </PassageAuthGuard>
@@ -39,3 +34,9 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+/* <div className={styles.message}>
+          You successfully signed in with Passage. This is your homepage. <br />
+          <br />
+          Your username is: {userInfo?.email}
+        </div> */

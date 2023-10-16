@@ -7,6 +7,7 @@ import Dashboard from "./views/Dashboard";
 import Profile from "./views/Profile";
 import Chat from "./views/Chat";
 import Banner from "./components/banner";
+import Browse from "./views/Browse";
 import styles from "./styles/App.module.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/chat" element={<Chat />}></Route>
+            <Route path="/browse" element={<Browse />}></Route>
           </Routes>
         </div>
       </div>
