@@ -14,11 +14,10 @@ router.get("/allUsers", async (req, res) => {
   }
 });
 
-//retrieve information from one user
-router.get("/oneUser/:id", async (req, res) => {
+//retrieve information from one user by their passage ID
+router.post("/getUserProfile", async (req, res) => {
     try {
-        const oneUser = await User.findById(
-          req.params.id);
+        const getUser = await User.findOne({passage_id: req.body.psg_auth_token})
         res.status(200).json(oneUser);
       } catch (err) {
         res.status(400).json({ error: err });
@@ -38,11 +37,17 @@ router.post("/createUserProfile", async (req, res) => {
 
 
 //update user profile
-router.post("/UpdateUserProfile/:id", async (req, res) => {
+router.post("/updateUserProfile", async (req, res) => {
   try {
+    
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      req.body,
+        req.body.id,
+        {
+            ...(req.body.firstname && {firstname: req.body.firstname}),
+            ...(req.body.lastname && {lastname: req.body.lastname}),
+            ...(req.body.email && {email: req.body.email}),
+            ...(req.body.zipcode && {zipcode: req.body.zipcode})
+        },
       { new: true }
     );
     res.status(200).json(updatedUser);
