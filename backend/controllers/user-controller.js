@@ -30,7 +30,7 @@ router.post("/createUserProfile", async (req, res) => {
   console.log(req);
   try {
     const newUserProfile = await User.create(req.body);
-    res.status(201).json(newUser);
+    res.status(201).json(newUserProfile);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -38,14 +38,14 @@ router.post("/createUserProfile", async (req, res) => {
 
 
 //update user profile
-router.post("Updateuserprofile/:id", async (req, res) => {
+router.post("/UpdateUserProfile/:id", async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
     );
-    res.status(200).json(updatedChocolist);
+    res.status(200).json(updatedUser);
   } catch (err) {
     res.status(400).json({ error: err });
   }
