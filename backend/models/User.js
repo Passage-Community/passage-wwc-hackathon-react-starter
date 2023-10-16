@@ -5,7 +5,10 @@ const UserSchema = new mongoose.Schema(
         firstname: {type: String, required: true},
         lastname: {type: String, required: true },
         email: {type: String},
-        passageToken: {type: String},
+        passage_id: {
+            type: String,
+            unique: true
+        },
         zipcode: {type: String},
         favoritepeople: {type: String},
         favoritelistings: {type: String},
