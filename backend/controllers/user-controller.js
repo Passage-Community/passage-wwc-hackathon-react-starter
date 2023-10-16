@@ -1,42 +1,85 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require('../models');
+const Passage = require("@passageidentity/passage-node");
 
-//retrieve information from all users
-router.get("/allUsers", async (req, res) => {
-  try {
-    console.log("a");
-    const allUsers = await User.find({});
-    console.log(allUsers)
-    res.status(200).json(allUsers);
-  } catch (err) {
-    res.status(400).json({ error: err });
-  }
+require("dotenv").config();
+
+const passage = new Passage({
+    appID: process.env.PASSAGE_APP_ID,
+    apiKey: process.env.PASSAGE_API_KEY,
+    authStrategy: "HEADER",
 });
 
-//retrieve information from one user by their passage ID
-router.get("/getUserProfile", async (req, res) => {
+router.post("/getUserProfile", async (req, res) => {
     try {
-        const getUser = await User.findOne({passage_id: req.body.psg_auth_token})
-        res.status(200).json(getUser);
-      } catch (err) {
+        //retrieving info from passage
+        const userID = await passage.authenticateRequest(req);
+        if (userID) {
+            // user is authenticated //add more fields later
+            const { email, phone } = await passage.user.get(userID);
+            const identifier = email ? email : phone;
+
+            // res.json({
+            //     authStatus: "success",
+            //     identifier,
+            // });
+            //retrieving from mongodb 
+            const getUser = await User.findOne({passage_id: identifier});
+            if (getUser) {
+                res.status(200).json(getUser);
+            } else {
+                const newUserProfile = await User.create({'???':'???'});
+                // logic to get meta data from passage and create user
+                res.status(201).json(newUserProfile);
+            }
+        }
+    } catch (e) {
+        // authentication failed
+        // console.log(e);
+        // res.json({
+        //     authStatus: "failure",
+        // });
         res.status(400).json({ error: err });
-      }});
+    }
+});
+
+//retrieve information from all users
+// router.get("/allUsers", async (req, res) => {
+//   try {
+//     console.log("a");
+//     const allUsers = await User.find({});
+//     console.log(allUsers)
+//     res.status(200).json(allUsers);
+//   } catch (err) {
+//     res.status(400).json({ error: err });
+//   }
+// });
+
+//retrieve information from one user by their passage ID
+// router.get("/getUserProfile/:psg_auth_token", async (req, res) => {
+//     try {
+//         const getUser = await User.findOne({_id: req.params.psg_auth_token})
+//         res.status(200).json(getUser);
+//     } catch (err) {
+//         res.status(400).json({ error: err });
+//     }
+// });
 
 
 // creates user account
-router.post("/createUserProfile", async (req, res) => {
-  console.log(req);
-  try {
-    const newUserProfile = await User.create(req.body);
-    res.status(201).json(newUserProfile);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+// router.post("/createUserProfile", async (req, res) => {
+//   console.log(req);
+//   try {
+//     const newUserProfile = await User.create(req.body);
+//     res.status(201).json(newUserProfile);
+//   } catch (err) {
+//     res.status(400).json({ error: err.message });
+//   }
+// });
 
 
-//update user profile
+//update user profile 
 router.put("/updateUserProfile", async (req, res) => {
   try {
     

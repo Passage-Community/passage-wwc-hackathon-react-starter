@@ -19,12 +19,20 @@ app.use(
 
 app.use("/user", userController);
 
+let passageConfig = {
+  appID: "YOUR_APP_ID",
+  apiKey: "YOUR_API_KEY",
+};
+
+
 const passage = new Passage({
   appID: process.env.PASSAGE_APP_ID,
   apiKey: process.env.PASSAGE_API_KEY,
   authStrategy: "HEADER",
 });
 
+
+//add more fields from passage.console later
 app.post("/auth", async (req, res) => {
   try {
     const userID = await passage.authenticateRequest(req);
@@ -46,6 +54,7 @@ app.post("/auth", async (req, res) => {
     });
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
