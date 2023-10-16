@@ -22,12 +22,6 @@ const UserSchema = new mongoose.Schema(
                 ref: "Listing"
             }
         ],
-        listings: [
-            {
-                type: mongoose.Types.ObjectId,
-                ref: "Listing"
-            }
-        ]
     },
     { timestamps: true }
 );

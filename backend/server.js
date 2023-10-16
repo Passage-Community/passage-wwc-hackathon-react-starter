@@ -2,6 +2,7 @@ const express = require("express");
 const Passage = require("@passageidentity/passage-node");
 const cors = require("cors");
 const userController = require("./controllers/user-controller");
+const listingController = require("./controllers/listing-controller")
 
 const app = express();
 const PORT = 3000;
@@ -18,6 +19,7 @@ app.use(
 );
 
 app.use("/user", userController);
+app.use("/listing", listingController)
 
 let passageConfig = {
   appID: "YOUR_APP_ID",

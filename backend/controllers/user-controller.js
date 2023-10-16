@@ -3,6 +3,8 @@ const router = express.Router();
 const { User } = require('../models');
 const Passage = require("@passageidentity/passage-node");
 
+
+
 require("dotenv").config();
 
 const passage = new Passage({
@@ -17,9 +19,9 @@ router.post("/getUserProfile", async (req, res) => {
         const userID = await passage.authenticateRequest(req);
         if (userID) {
             // user is authenticated //add more fields later
-            const { email, phone } = await passage.user.get(userID);
+            const { email, phone, user_metadata } = await passage.user.get(userID);
             const identifier = email ? email : phone;
-
+            
             // res.json({
             //     authStatus: "success",
             //     identifier,
@@ -29,12 +31,18 @@ router.post("/getUserProfile", async (req, res) => {
             if (getUser) {
                 res.status(200).json(getUser);
             } else {
-                const newUserProfile = await User.create({'???':'???'});
+                console.log(user_metadata.first_name);
+                const newUserProfile = await User.create({
+                    passage_id: identifier,
+                    ...(user_metadata.first_name && {firstname: user_metadata.first_name}),
+                    ...(user_metadata.last_name && {lastname: user_metadata.last_name}),
+                    ...(user_metadata.zip_code && {zipcode: user_metadata.zip_code})
+                });
                 // logic to get meta data from passage and create user
                 res.status(201).json(newUserProfile);
             }
         }
-    } catch (e) {
+    } catch (err) {
         // authentication failed
         // console.log(e);
         // res.json({
@@ -99,7 +107,16 @@ router.put("/updateUserProfile", async (req, res) => {
   }
 });
 
+//List Listings for one specific user
 
+router.get("/oneUsersListings/:id", async (req, res) => {
+    try {
+      const foundUserListings = await User.findById(req.params.id).where("listings")
+      res.status(200).json(foundUserListings)
+      } catch (err) {
+          res.status(400).json({ error: err })
+      }
+    })
 
 
 module.exports = router;
