@@ -2,6 +2,7 @@ import styles from "../styles/Dashboard.module.css";
 import { PassageAuthGuard } from "@passageidentity/passage-react";
 import { usePassageUserInfo } from "../hooks/";
 import LogoutButton from "../components/LogoutButton";
+import { Link } from "react-router-dom"
 
 function Dashboard() {
   const { userInfo, loading } = usePassageUserInfo();
@@ -27,11 +28,8 @@ function Dashboard() {
     >
       <div className={styles.dashboard}>
         <div className={styles.title}>Welcome</div>
-        <div className={styles.message}>
-          You successfully signed in with Passage. This is your homepage. <br />
-          <br />
-          Your username is: {userInfo?.email}
-        </div>
+        
+        <Link to='./browse'>Browse Listings</Link>
         <LogoutButton />
       </div>
     </PassageAuthGuard>
@@ -39,3 +37,9 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+/* <div className={styles.message}>
+          You successfully signed in with Passage. This is your homepage. <br />
+          <br />
+          Your username is: {userInfo?.email}
+        </div> */
