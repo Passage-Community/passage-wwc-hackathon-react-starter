@@ -25,8 +25,6 @@ router.get("/oneUser/:id", async (req, res) => {
       }});
 
 
-
-
 // creates user account
 router.post("/createUserProfile", async (req, res) => {
   console.log(req);
