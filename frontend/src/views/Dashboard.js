@@ -2,7 +2,6 @@ import styles from "../styles/Dashboard.module.css";
 import { PassageAuthGuard } from "@passageidentity/passage-react";
 import { usePassageUserInfo } from "../hooks/";
 import LogoutButton from "../components/LogoutButton";
-import { Link } from "react-router-dom"
 
 function Dashboard() {
   const { userInfo, loading } = usePassageUserInfo();
@@ -28,8 +27,6 @@ function Dashboard() {
     >
       <div className={styles.dashboard}>
         <div className={styles.title}>Welcome</div>
-        
-        <Link to='./browse'>Browse Listings</Link>
         <LogoutButton />
       </div>
     </PassageAuthGuard>
