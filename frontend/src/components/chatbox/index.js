@@ -1,4 +1,4 @@
 
 
 export * from './ChatBox'
-export * from './Message'
+export * from './MessageCard'

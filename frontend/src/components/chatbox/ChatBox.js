@@ -1,4 +1,4 @@
-import { Message } from "./Message";
+import { MessageCard } from "./MessageCard";
 import { faker } from "@faker-js/faker";
 
 export const ChatBox = () => {
@@ -8,7 +8,7 @@ export const ChatBox = () => {
     while (msgList.length <= qty) {
       msgList.push({
         content: faker.lorem.sentences({ min: 1, max: 3 }),
-        user: faker.lorem.fullName,
+        user: faker.person.fullName(),
       });
     }
   };
@@ -32,7 +32,7 @@ export const ChatBox = () => {
             msgList.map((message, idx) => (
               // reason for mapping <li> instead of just <div>: semantic markup improves accessibility for users that require screen-readers
               <li key={idx} style={{ listStyleType: "none" }}>
-                <Message
+                <MessageCard
                   content={message.content}
                   user={message.user}
                   orientation="right"
