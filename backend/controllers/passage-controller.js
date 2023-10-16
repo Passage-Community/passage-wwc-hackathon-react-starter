@@ -5,10 +5,10 @@ const { User } = require("../models");
 //Login
 router.post("/login", async(req, res) => {
     try{
-        const getUser = await user.findOne({passage_id: req.body.token_id})
+        const getUser = await User.findOne({passage_id: req.body.token_id})
         // const getUser = await user.find({})
         if (!getUser) {
-            getUser = await user.create({passage_id: req.body.token_id})
+            getUser = await User.create({passage_id: req.body.token_id})
         }
         res.status(200).json(getUser);
     } catch (err) {
