@@ -2,7 +2,7 @@ const express = require("express");
 const Passage = require("@passageidentity/passage-node");
 const cors = require("cors");
 const userController = require("./controllers/user-controller");
-
+const passageController = require("./controllers/passage-controller")
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +19,8 @@ app.use(
 );
 
 app.use("/user", userController);
+
+app.use("/login", passageController);
 
 const passage = new Passage({
   appID: process.env.PASSAGE_APP_ID,
