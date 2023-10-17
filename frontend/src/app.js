@@ -10,7 +10,7 @@ import Banner from "./components/banner";
 import Listings from "./views/Listings";
 import styles from "./styles/App.module.css";
 
-import "./server"
+// import "./server"
 
 function App() {
   return (
