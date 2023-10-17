@@ -5,6 +5,8 @@
     "start-backend": "cd ./backend && npm run start"
   },
   "devDependencies": {
-    "miragejs": "^0.1.47"
+    "@faker-js/faker": "^8.2.0",
+    "miragejs": "^0.1.47",
+    "mongoose": "^7.6.2"
   }
 }

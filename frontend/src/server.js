@@ -15,7 +15,7 @@ createServer({
             price: '3.50',
             unit: 'pint',
             desc: 'Ripe red berries',
-            imageURL: 'https://fakeimg.pl/100x80/e02121/4bb0db?text=strawberries',
+            imageUrl: 'https://fakeimg.pl/100x80/e02121/4bb0db?text=strawberries',
             type: 'produce', 
             subtype: 'fruit'
         })
@@ -27,7 +27,7 @@ createServer({
             price: '3.00',
             unit: 'lb',
             desc: 'Vine-ripened kiwifruit',
-            imageURL: 'https://fakeimg.pl/100x80/45c936/524bdb?text=Kiwis',
+            imageUrl: 'https://fakeimg.pl/100x80/45c936/524bdb?text=Kiwis',
             type: 'produce', 
             subtype: 'fruit'
         })
@@ -39,7 +39,7 @@ createServer({
             price: '2.50',
             unit: 'lb',
             desc: 'Asparagus Asparagus Asparagus Asparagus Asparagus Asparagus Asparagus Asparagus.',
-            imageURL: 'https://fakeimg.pl/100x80/b5d6a7/17144d?text=Asparagus',
+            imageUrl: 'https://fakeimg.pl/100x80/b5d6a7/17144d?text=Asparagus',
             type: 'produce', 
             subtype: 'vegetables'
         })
@@ -51,7 +51,7 @@ createServer({
             price: '3.00',
             unit: 'plant',
             desc: '3 week old Beefsteak seedlings',
-            imageURL: 'https://fakeimg.pl/100x80/2d730f/e8e40c?text=Tomato+plants',
+            imageUrl: 'https://fakeimg.pl/100x80/2d730f/e8e40c?text=Tomato+plants',
             type: 'plants', 
             subtype: 'vegetables'
         })
@@ -63,7 +63,7 @@ createServer({
             price: '25.00',
             unit: 'bush',
             desc: '1 year old bushes, lots of berries',
-            imageURL: 'https://fakeimg.pl/100x80/065cb3/e8e40c?text=Blueberry+bushes',
+            imageUrl: 'https://fakeimg.pl/100x80/065cb3/e8e40c?text=Blueberry+bushes',
             type: 'plants', 
             subtype: 'fruit'
         })
@@ -75,7 +75,7 @@ createServer({
             price: '4.00',
             unit: 'oz',
             desc: 'Heirloom watermelon radish seeds',
-            imageURL: 'https://fakeimg.pl/100x80/e30dd8/0ce89b?text=watermelon+radish+seeds',
+            imageUrl: 'https://fakeimg.pl/100x80/e30dd8/0ce89b?text=watermelon+radish+seeds',
             type: 'seeds', 
             subtype: 'vegetables'
         })
@@ -87,7 +87,7 @@ createServer({
             price: '3.50',
             unit: 'oz',
             desc: 'Delicious Lemon Cucumbers',
-            imageURL: 'https://fakeimg.pl/100x80/cdebcd/22473a?text=lemon+cucumber+seeds',
+            imageUrl: 'https://fakeimg.pl/100x80/cdebcd/22473a?text=lemon+cucumber+seeds',
             type: 'seeds', 
             subtype: 'vegetables'
         })

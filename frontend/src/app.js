@@ -7,8 +7,10 @@ import Dashboard from "./views/Dashboard";
 import Profile from "./views/Profile";
 import Chat from "./views/Chat";
 import Banner from "./components/banner";
-import Browse from "./views/Browse";
+import Listings from "./views/Listings";
 import styles from "./styles/App.module.css";
+
+import "./server"
 
 function App() {
   return (
@@ -18,10 +20,10 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/listings" element={<Listings />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/chat" element={<Chat />}></Route>
-            <Route path="/browse" element={<Browse />}></Route>
           </Routes>
         </div>
       </div>
