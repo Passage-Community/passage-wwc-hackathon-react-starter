@@ -3,6 +3,7 @@ body {
   height: 100vh;
   font-family: sans-serif;
   background-color: #e5e5e5;
+  position: relative;
 }
 
 iframe#webpack-dev-server-client-overlay {

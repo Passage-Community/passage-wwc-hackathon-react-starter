@@ -1,0 +1,22 @@
+.mainHeader {
+  padding: 20px 30px;
+  display: flex;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #114b2d;
+  color: white;
+}
+
+.headerText {
+  font-size: 24px;
+  margin: 0px 10px;
+}
+
+.link,
+a,
+a:visited {
+  margin-left: 20px;
+  color: white;
+  text-decoration-color: white;
+}
