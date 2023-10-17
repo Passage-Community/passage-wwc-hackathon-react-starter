@@ -8,19 +8,12 @@ export default function Listing() {
 
     // fetch listings from db
     React.useEffect(() => {
-        // mirage API
-        // fetch('/api/listings')
-        // mongo API
         fetch('http://localhost:3000/listing')
             .then((res) => res.json())
             .then(data => {
-                console.log(data)
-                // set state to all listings
                 setListings(data)
             })
     }, [])
-
-    console.log(listings)
 
     const listingElements = listings.map(listing => (
         // assign key with item id so react doesn't get mad
