@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 
 function Home() {
   return (
-    <PassageUnAuthGuard authComp={<Navigate to="/browse" />}>
+    <PassageUnAuthGuard authComp={<Navigate to="/listings" />}>
       <PassageAuth />
     </PassageUnAuthGuard>
   );
