@@ -10,12 +10,11 @@ const ListingSchema = new mongoose.Schema(
         },
         category: {
             type: String, 
-            enum: { values: ["produce", "live plant", "seed"], description: "Must be either produce, live plant, or seed"}
+            enum: ["produce", "live plant", "seed"]  
         },  
-        dateexpires: {
+        expireAt : {
             type: Date,
-            default: new Date(),
-            expires: 604800 //expires in 7 days
+            default: new Date(new Date().setDate(new Date().getDate() + 7)) //expires in 7 days
         }
     },
     { timestamps: true }  //Creates an update and created at pathway 
