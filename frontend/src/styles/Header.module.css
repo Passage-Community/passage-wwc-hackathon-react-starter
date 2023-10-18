@@ -13,10 +13,6 @@
   margin: 0px 10px;
 }
 
-.link,
-a,
-a:visited {
-  margin-left: 20px;
+.mainHeader a {
   color: white;
-  text-decoration-color: white;
 }

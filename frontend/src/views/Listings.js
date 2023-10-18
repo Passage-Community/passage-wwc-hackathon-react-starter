@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import LogoutButton from "../components/LogoutButton";
 
@@ -8,22 +9,25 @@ export default function Listing() {
 
     // fetch listings from db
     React.useEffect(() => {
-        fetch('http://localhost:3000/listing')
-            .then((res) => res.json())
-            .then(data => {
-                setListings(data)
-            })
+        const getAllListings = async () => {
+            const allListings = await axios.get('http://localhost:3000/listing/')
+            console.log(allListings.data)
+            setListings(allListings.data)
+        }
+        getAllListings()
     }, [])
 
     const listingElements = listings.map(listing => (
         // assign key with item id so react doesn't get mad
         <div key={listing._id}>
-            <img src={listing.imageUrl} />
-            <div>
-                <h3>{listing.title}</h3>
-                <p>${listing.price}/${listing.unit}</p>
-                <p>{listing.text}</p>
-            </div>
+            <Link to={`/listings/${listing._id}`}>
+                <img src={listing.imageUrl} />
+                <div>
+                    <h3>{listing.title}</h3>
+                    <p>${listing.price}/${listing.unit}</p>
+                    <p>{listing.text}</p>
+                </div>
+            </Link>
         </div>
     ))
 
