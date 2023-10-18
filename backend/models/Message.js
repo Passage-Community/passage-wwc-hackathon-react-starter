@@ -2,14 +2,8 @@ const mongoose = require("mongoose");
 
 const MessageSchema = new mongoose.Schema(
     {
-        fromUserID: {
-            type: mongoose.Types.ObjectId,
-            ref: "User"
-        },
-        toUserID: {
-            type: mongoose.Types.ObjectId,
-            ref: "User"
-        },
+        fromUserID: { type: String },
+        toUserID: { type: String },
         text: { type: String },
         sendAt : {
             type: Date,
