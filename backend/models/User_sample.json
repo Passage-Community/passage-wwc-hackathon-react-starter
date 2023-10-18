@@ -1,0 +1,16 @@
+{
+    "_id": {
+      "$oid": "6530076dd128d58567d48136"
+    },
+    
+  "firstname": "James",
+  "lastname":"Curran",
+  "passage_id":"maryrodri3210@gmail.com",
+  "zipcode": "08618",
+  "favoritepeople": [],
+  "favoritelistings": [],
+  "listings": [],
+  "createdAt" : "2023-10-18T16:33:08.995+00:00",
+  "updatedAt" : "2023-10-18T16:33:08.995+00:00",
+  "__v": 0
+  }

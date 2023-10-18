@@ -3,10 +3,11 @@ const Passage = require("@passageidentity/passage-node");
 const cors = require("cors");
 const userController = require("./controllers/user-controller");
 const listingController = require("./controllers/listing-controller")
+const messageController = require("./controllers/message-controller");
 
 const app = express();
-const PORT = 3000;
-const CLIENT_URL = "http://localhost:3000";
+const PORT = 8000;
+const CLIENT_URL = "http://localhost:"+PORT;
 
 require("dotenv").config();
 require("./config/db.connection");
@@ -20,11 +21,7 @@ app.use(
 
 app.use("/user", userController);
 app.use("/listing", listingController)
-
-let passageConfig = {
-  appID: "YOUR_APP_ID",
-  apiKey: "YOUR_API_KEY",
-};
+app.use("/message", messageController)
 
 
 const passage = new Passage({

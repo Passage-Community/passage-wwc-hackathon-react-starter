@@ -5,7 +5,7 @@ function Banner() {
     return ( 
         <div className={styles.mainHeader}>
             <Link to={'/'}><div className={styles.passageLogo}></div></Link>
-            <div className={styles.headerText}>Hackathon Project</div>
+            <div className={styles.headerText}>Harvest Exchange</div>
             <div className={styles.spacer}></div>
             <Link to={'/profile'}>Profile</Link>
         </div>
