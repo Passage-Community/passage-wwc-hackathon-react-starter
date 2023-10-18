@@ -5,39 +5,9 @@ const { Listing } = require("../models");
 require("dotenv").config();
 
 
-//gets the zopcode and turns it into latitude and longitude
-router.get("/zipp", async(req,res) => {
 
-try {
-    const zipcode = "87123"
-fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.GEOCODE_API_KEY}&location=${zipcode}`)
-  .then((res) => res.json())
-  .then((json) => {
-    // setData(json.results);
-    const zipInfo = json.results[0].locations[0].latLng
-    console.log(zipInfo)
-    res.status(200).json(zipInfo)
-  })
-  .catch(console.error);
-} catch (err) {
-    res.status(400).json({ error: err });
-  }
-});
 
-//retrieve all zipcodes
-router.get("/getzip", async (req, res) => {
-  try {
-    console.log("b");
-    db.Listing.createIndex({ zipcode: "2dsphere" });
-    const zipData = zipcodes.lookup(req.body.zipCode);
-    console.log(zipData);
-    //   const allListing = await Listing.find({});
-    //   console.log(allListing)
-    //   res.status(200).json(allListing);
-  } catch (err) {
-    res.status(400).json({ error: err });
-  }
-});
+
 
 // retrieve information from all listings
 router.get("/", async (req, res) => {
@@ -55,6 +25,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const getOneListing = await Listing.findOne({ _id: req.params.id });
+    
     res.status(200).json(getOneListing);
   } catch (err) {
     res.status(400).json({ error: err });
@@ -73,15 +44,21 @@ router.get("/user/:id", async (req, res) => {
 
 // creates user listing
 router.post("/", async (req, res) => {
-  console.log(req);
-  try {
-    const newListing = await Listing.create(req.body);
-    // const zipcode =req.body.zipcode
-    // console.log(zipcode)
-    res.status(200).json(newListing);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+    try {
+        const zipCode = req.body.zipCode
+        fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.GEOCODE_API_KEY}&location=${zipCode}`)
+        .then((res) => res.json())
+        .then( async (json) => {
+        // setData(json.results);
+            const zipInfo = (json.results[0].locations[0].latLng);
+            req.body.zipCoords = { type: "Point", coordinates: [zipInfo.lat, zipInfo.lng]};
+            const newListing = await Listing.create(req.body);
+            res.status(200).json(newListing);
+        })
+        .catch(console.error);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
 });
 
 //edit Listing for user
@@ -107,5 +84,6 @@ router.delete("/:id", async (req, res) => {
     res.status(400).json({ error: err });
   }
 });
+
 
 module.exports = router;

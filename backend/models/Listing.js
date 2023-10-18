@@ -23,9 +23,13 @@ const ListingSchema = new mongoose.Schema(
             enum: ["lb", "gram", "ounce"]
         },
         zipCode: {type: String},
-        zipCords: {
-            type: String,
-            coordinates: []
+        zipCoords: {
+            type: {
+                type: String
+            },
+            coordinates: {
+                type: [Number]
+            }
         },
         expireAt : {
             type: Date,
