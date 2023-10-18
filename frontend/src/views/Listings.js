@@ -9,12 +9,11 @@ export default function Listing() {
 
     // fetch listings from db
     React.useEffect(() => {
-        const httpRequest = axios.create()
-        const fetchListings = async (request) => {
-            return httpRequest.get('http://localhost:3000/listing')
-                .then(results => setListings(results.data))
+        const getAllListings = async () => {
+            const allListings = await axios.get('http://localhost:3000/listing')
+            setListings(allListings.data)
         }
-        fetchListings()
+        getAllListings()
     }, [])
 
     const listingElements = listings.map(listing => (
