@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import LogoutButton from "../components/LogoutButton";
 
@@ -8,11 +9,12 @@ export default function Listing() {
 
     // fetch listings from db
     React.useEffect(() => {
-        fetch('http://localhost:3000/listing')
-            .then((res) => res.json())
-            .then(data => {
-                setListings(data)
-            })
+        const httpRequest = axios.create()
+        const fetchListings = async (request) => {
+            return httpRequest.get('http://localhost:3000/listing')
+                .then(results => setListings(results.data))
+        }
+        fetchListings()
     }, [])
 
     const listingElements = listings.map(listing => (
