@@ -11,20 +11,21 @@ export default function ListingDetail() {
     React.useEffect(() => {
         const getOne = async () => {
             const listing = await axios.get(`http://localhost:3000/listing/${id}`)
-            console.log(listing.data)
             setListing(listing.data)
         }
         getOne()
-    }, [])
+    }, [id])
 
     return (
         <div>
             {listing ? (
                 <div>
-                    <img src={listing.imageUrl} />
+                    <img src={listing.image} />
+                    <p>{listing.category}</p>
                     <h2>{listing.title}</h2>
+                    <p>posted on {listing.createdAt}</p>
                     <p><span>${listing.price}</span>/{listing.unit}</p>
-                    <p>{listing.desc}</p>
+                    <p>{listing.text}</p>
                     <button>Message</button>
                 </div>
             ) : <h2>Loading...</h2>}
