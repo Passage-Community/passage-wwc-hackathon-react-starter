@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 // console.log({userInfo})
 
 export default function CreateListing() {
-    const navigate = useNavigate();
-    // check to see if user has auth token
-    if (!userInfo) navigate('/')
+    // const navigate = useNavigate();
+    // // check to see if user has auth token
+    // if (!userInfo) navigate('/')
 
     const [listing, setListing] = React.useState ({
         userId: id,
