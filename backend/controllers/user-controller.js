@@ -36,7 +36,8 @@ router.post("/getUserProfile", async (req, res) => {
                     passage_id: identifier,
                     ...(user_metadata.first_name && {firstname: user_metadata.first_name}),
                     ...(user_metadata.last_name && {lastname: user_metadata.last_name}),
-                    ...(user_metadata.zip_code && {zipcode: user_metadata.zip_code})
+                    ...(user_metadata.zip_code && {zipcode: user_metadata.zip_code}),
+                    ...(user_metadata.username && {username: user_metadata.username})
                 });
                 // logic to get meta data from passage and create user
                 res.status(201).json(newUserProfile);
