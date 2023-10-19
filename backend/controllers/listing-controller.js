@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     //if filter is kept as an empty object, shows all listings
     let filter = {};
     //destructing the listing object
-    let { location, distance, category, subtypes, unit} = req.query;
+    let { location, distance, category, subtypes, price} = req.query;
     //if searching for zipcode and distance, example: url = http://localhost:3000/listing?zipCode=76120&distance=50 
     // api turns zipcode into longitude and latitude
     //store lat & long into zipinfo
@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
         ...filter,
         ...(category && {category: category}),
         ...(subtypes && {subtypes: subtypes}),
-        ...(unit && {unit: unit})
+        ...(price && {unit: price})
 
     };
 
