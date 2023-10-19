@@ -10,13 +10,13 @@ router.get("/", async (req, res) => {
     //if filter is kept as an empty object, shows all listings
     let filter = {};
     //destructing the listing object
-    let { zipCode, distance, category } = req.query;
+    let { location, distance, category } = req.query;
     //if searching for zipcode and distance, example: url = http://localhost:3000/listing?zipCode=76120&distance=50 
     // api turns zipcode into longitude and latitude
     //store lat & long into zipinfo
     // filter then adds a key called zipCoords containing the distance away from said coordinates
-    if (zipCode && distance) {
-        await fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.GEOCODE_API_KEY}&location=${zipCode}`)
+    if (location && distance) {
+        await fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.GEOCODE_API_KEY}&location=${location}`)
         .then((res) => res.json())
         .then( (json) => {
             const zipInfo = (json.results[0].locations[0].latLng);
@@ -71,8 +71,8 @@ router.get("/user/:id", async (req, res) => {
 // creates user listing
 router.post("/", async (req, res) => {
     try {
-        const zipCode = req.body.zipCode
-        fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.GEOCODE_API_KEY}&location=${zipCode}`)
+        const location = req.body.location
+        fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.GEOCODE_API_KEY}&location=${location}`)
         .then((res) => res.json())
         .then( async (json) => {
             const zipInfo = (json.results[0].locations[0].latLng);

@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema(
             unique: true
         },
         zipcode: {type: String},
+         
         favoritepeople:  [
             {
                 type: mongoose.Types.ObjectId,
