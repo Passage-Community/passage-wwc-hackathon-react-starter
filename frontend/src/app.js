@@ -8,6 +8,11 @@ import Profile from "./views/Profile";
 import Chat from "./views/Chat";
 import Listings from "./views/Listings";
 import ListingDetail from "./views/ListingDetail";
+import CreateListing from "./views/CreateListing";
+import MyListings from "./views/MyListings";
+import Inbox from "./views/Inbox";
+import Favorites from "./views/Favorites";
+import Learn from "./views/Learn";
 import styles from "./styles/App.module.css";
 import Layout from "./components/Layout";
 
@@ -20,9 +25,15 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/listings" element={<Listings />} />
             <Route path="/listings/:id" element={<ListingDetail />} />
+            <Route path="/listings/create-listing" element={<CreateListing />} />
+            <Route path="/:userID/listings" element={<MyListings />} />
+            <Route path="/:userID/inbox" element={<Inbox />} />
+            <Route path="/:userID/favorites" element={<Favorites />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
+            {/* auth profile */}
+            <Route path="/profile" element={<Profile />} /> 
             <Route path="/chat" element={<Chat />} />
+            <Route path="/learn" element={<Learn />} />
           </Route>
         </Routes>
       </div>

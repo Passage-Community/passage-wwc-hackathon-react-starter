@@ -10,7 +10,7 @@ export default function Listing() {
     // fetch listings from db
     React.useEffect(() => {
         const getAllListings = async () => {
-            const allListings = await axios.get('http://localhost:3000/listing/')
+            const allListings = await axios.get('http://localhost:8000/listing/')
             console.log(allListings.data)
             setListings(allListings.data)
         }
@@ -21,7 +21,7 @@ export default function Listing() {
         // assign key with item id so react doesn't get mad
         <div key={listing._id}>
             <Link to={`/listings/${listing._id}`}>
-                <img src={listing.imageUrl} />
+                <img className="listing-img-lrg" src={listing.imageUrl} />
                 <div>
                     <h3>{listing.title}</h3>
                     <p>${listing.price}/${listing.unit}</p>

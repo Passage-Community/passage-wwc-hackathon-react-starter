@@ -10,7 +10,7 @@ export default function ListingDetail() {
     // fetch one listing by id
     React.useEffect(() => {
         const getOne = async () => {
-            const listing = await axios.get(`http://localhost:3000/listing/${id}`)
+            const listing = await axios.get(`http://localhost:8000/listing/${id}`)
             setListing(listing.data)
         }
         getOne()

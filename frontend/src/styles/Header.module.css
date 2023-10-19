@@ -15,4 +15,18 @@
 
 .mainHeader a {
   color: white;
+
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+li {
+  padding-left: 1rem;
+}
+
+a {
+  text-decoration: none;
 }
