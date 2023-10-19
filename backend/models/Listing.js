@@ -17,12 +17,17 @@ const ListingSchema = new mongoose.Schema(
         },
         price: {
             type: Number,
+            default: 0
         },
         unit: {
             type: String,
-            enum: ["lb", "gram", "ounce"]
+            enum: ["lb", "gram", "ounce", "pint", "flat", "dozen"]
         },
-        zipCode: {type: String},
+        subtypes: {
+            type: String,
+            enum: ["flowers", "fruit", "vegetable", "fungi"]
+        },
+        location: {type: String},
         zipCoords: {
             type: {
                 type: String
