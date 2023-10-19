@@ -1,4 +1,4 @@
-import { ChatBox } from "../components/chatbox";
+import { ChatBox } from "../components/ChatBox";
 
 function Chat() {
   return (
