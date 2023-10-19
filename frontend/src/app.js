@@ -30,7 +30,6 @@ function App() {
             <Route path="/:userID/inbox" element={<Inbox />} />
             <Route path="/:userID/favorites" element={<Favorites />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            {/* auth profile */}
             <Route path="/profile" element={<Profile />} /> 
             <Route path="/chat" element={<Chat />} />
             <Route path="/learn" element={<Learn />} />
