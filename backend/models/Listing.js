@@ -39,6 +39,8 @@ const ListingSchema = new mongoose.Schema(
     { timestamps: true }  //Creates an update and created at pathway 
 );
 
+ListingSchema.index({zipCoords: '2dsphere'});
+
 const Listing = mongoose.model("Listing", ListingSchema);
 
 module.exports = Listing;

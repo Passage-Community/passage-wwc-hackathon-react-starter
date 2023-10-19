@@ -4,41 +4,43 @@ const { User } = require("../models");
 const { Listing } = require("../models");
 require("dotenv").config();
 
-
-
-
-
-//retrieving listing by radius of location
-// router.get("/radius", async (req, res) => {
-//     try {
-//       console.log("b");
-//       const searchRadius = 8046 //5 miles in radius
-//       db.Listing.createIndex( { zipCoords : "2dsphere" } )
-//       const nearByListing = Listing.find({ zipCoords:
-//         { $near: {
-//             $geometry: [req.body.zipCoords.coordinates[0], req.body.zipCoords.coordinates[1]],
-//             $maxDistance: searchRadius
-//           }
-//         }
-//       });
-//     //   const allListing = await Listing.find({
-
-//     //   });
-//     //   console.log(allListing);
-//     console.log(nearByListing)
-//       res.status(200).json(nearByListing);
-//     } catch (err) {
-//       res.status(400).json({ error: err });
-//     }
-//   });
-
-
 // retrieve information from all listings
 router.get("/", async (req, res) => {
   try {
-    console.log("a");
-    const allListing = await Listing.find({});
-    console.log(allListing);
+    //if filter is kept as an empty object, shows all listings
+    let filter = {};
+    //destructing the listing object
+    let { zipCode, distance, category } = req.query;
+    //if searching for zipcode and distance, example: url = http://localhost:3000/listing?zipCode=76120&distance=50 
+    // api turns zipcode into longitude and latitude
+    //store lat & long into zipinfo
+    // filter then adds a key called zipCoords containing the distance away from said coordinates
+    if (zipCode && distance) {
+        await fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${process.env.GEOCODE_API_KEY}&location=${zipCode}`)
+        .then((res) => res.json())
+        .then( (json) => {
+            const zipInfo = (json.results[0].locations[0].latLng);
+            filter.zipCoords = { 
+                $near: {
+                    $geometry: {
+                        type: "Point",
+                        coordinates: [zipInfo.lng, zipInfo.lat]
+                    },
+                    $maxDistance: (Number(distance) * 1609.344)
+                }
+            }
+        })
+    }
+
+    //checks if filter object has zipcoords and category. If category exists in the req.query(url) add category key along with value from the query
+    filter = {
+        ...filter,
+        ...(category && {category: category})
+    };
+
+    console.log(filter);
+    //search listing by whatever is in filter
+    const allListing = await Listing.find(filter);
     res.status(200).json(allListing);
   } catch (err) {
     res.status(400).json({ error: err });
@@ -74,7 +76,7 @@ router.post("/", async (req, res) => {
         .then((res) => res.json())
         .then( async (json) => {
             const zipInfo = (json.results[0].locations[0].latLng);
-            req.body.zipCoords = { type: "Point", coordinates: [zipInfo.lat, zipInfo.lng]};
+            req.body.zipCoords = { type: "Point", coordinates: [zipInfo.lng, zipInfo.lat]};
             const newListing = await Listing.create(req.body);
             res.status(200).json(newListing);
         })
