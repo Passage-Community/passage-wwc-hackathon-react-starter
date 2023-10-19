@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
         ...filter,
         ...(category && {category: category}),
         ...(subtypes && {subtypes: subtypes}),
-        ...(price && {unit: price})
+        ...(price && {price: price})
 
     };
 
