@@ -1,0 +1,67 @@
+.container {
+  margin: 0 auto; /* Center the container horizontally */
+  max-width: 500px;
+}
+
+.container ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  list-style: none; /* Remove bullet points from <ul> */
+}
+
+.container ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.container ul li > div:first-child {
+  flex: 75%; /* Take 75% of the available space */
+  padding: 5px;
+}
+
+.container ul li > div:last-child {
+  flex: 25%; /* Take 25% of the available space */
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.container form input {
+  min-width: 100%;
+  height: 100px;
+  padding: 5px;
+}
+
+.container form button {
+  border: none;
+  padding: 5px;
+}
+
+.userInfo {
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userName {
+  color: blue;
+}
+
+.userInfo img {
+  margin: 0 auto;
+  max-width: 50px;
+  padding: 4px;
+}
